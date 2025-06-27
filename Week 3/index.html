@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function callAPI() {
+            fetch('https://fakerapi.it/api/v1/companies',
+                {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                }
+            )
+                .then(response => response.json())
+                .then(response => {
+                    const data = response.data;
+                    console.log(data);
+                    // Process the data as needed
+                    const container = document.getElementById("container");
+                    container.innerHTML = JSON.stringify(data);
+                })
+
+        }
+
+    </script>
+    <button onclick="callAPI()">fetch</button>
+    <p id="container"></p>
+</body>
+
+</html>

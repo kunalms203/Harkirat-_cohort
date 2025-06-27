@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carecay</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./Style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="m-0 p-0">
+    <div>
+        <div class="carousel-container">
+            <div class="carousel rounded-md mt-4">
+                <img class="active"
+                    src="https://cdn.jdpower.com/JDPA_2020%20Chevrolet%20Corvette%20Stingray%20Red%20Front.jpg"
+                    alt="Slide 1">
+                <img src="https://w0.peakpx.com/wallpaper/476/626/HD-wallpaper-chevrolet-corvette-z06-luxury-car-2019-high-quality.jpg"
+                    alt="Slide 2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBSag43p5Sqv2ihvCMoIEIKN3fJMrKGNwTCQ&s"
+                    alt="Slide 3">
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center p-12 bg-gray-100 mt-4">
+        <h2 class="text-2xl font-bold mb-4">About Us</h2>
+        <p class="text-lg">Welcome to Carecay! We are dedicated to providing exceptional services and ensuring customer
+            satisfaction.<br /> Our mission is to make a positive impact through our innovative solutions.</p>
+    </div>
+
+    <script>
+        let index = 0;
+        function showSlides() {
+            const slides = document.querySelectorAll('.carousel img');
+            slides.forEach(slide => slide.classList.remove('active'));
+            index = (index + 1) % slides.length;
+            slides[index].classList.add('active');
+            setTimeout(showSlides, 3000);
+        }
+        showSlides();
+    </script>
+</body>
+
+</html>

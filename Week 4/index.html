@@ -1,0 +1,21 @@
+<html>
+    <Script>
+        const calculate = ()=>{
+            const p =document.getElementById('p').value;
+            const r =document.getElementById('r').value;
+            const t =document.getElementById('t').value;
+            fetch(`http://localhost:3000/calculate?PRINCIPAL=${p}&RATE=${r}&TIME=${t}`)
+            .then(response => response.json().then(response => {
+                document.getElementById('result').innerHTML = `The sum is: ${response.sum}`;
+                console.log(response.sum);
+            }))
+        };
+    </Script>
+    <body>
+        <input type="text" id="p" placeholder="p"><br><br>
+        <input type="text" id="r" placeholder="r"><br><br>
+        <input type="text" id="t" placeholder="t"><br><br>
+        <button onclick="calculate()">Add</button><br><br>
+        <p id="result"></p>
+    </body>
+</html>
