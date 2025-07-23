@@ -1,39 +1,68 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "./App.css";
+import { CountContext } from "./context.jsx";
+import { RecoilRoot, selector, useRecoilValue, useSetRecoilState } from "recoil";
+import { countAtom, evenSelector } from "../Store/Atoms/Count.jsx";
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
 
   return (
-    <>
-      <Count count={count}  setCount={setCount}/>
-    </>
+    <div>
+      {/* This logic is for the Context api */}
+      {/* <CountContext.Provider value={{ count, setCount }}> */}
+        <RecoilRoot>
+          <Count />
+        </RecoilRoot>
+      {/* This logic is for the Context api */}
+      {/* </CountContext.Provider> */}
+    </div>
   );
 }
 
 export default App;
 
-function Count({count,setCount}){
-  return(
+function Count() {
+  // This logic is for the Context api
+  // const {count} = useContext(CountContext);
+  const count = useRecoilValue(countAtom);
+  const isEven = useRecoilValue(evenSelector);
+  return (
+
     <>
-    {count}
-    <Button count={count} setCount = {setCount} />
+    <div>
+      {(isEven) ? "No is odd" : "no is even"}
+    </div>
+      
+      {count}
+      <Button />
     </>
-  )
+  );
 }
 
-
-function Button({ count, setCount }) {
+function Button() {
+  // This logic is for the Context api
+  // const { setCount } = useContext(CountContext);
+  const setCount = useSetRecoilState(countAtom);
+  
   return (
     <>
       <br />
-      <button onClick={()=>{
-        setCount(prev=> prev+1)
-      }}>Increase</button>
+      <button
+        onClick={() => {
+          setCount((prev) => prev + 1);
+        }}
+      >
+        Increase
+      </button>
       <br />
-      <button onClick={ ()=>{
-        setCount(prev => prev-1)
-      }}>decrese</button>
+      <button
+        onClick={() => {
+          setCount((prev) => prev - 1);
+        }}
+      >
+        decrese
+      </button>
     </>
   );
 }
