@@ -1,8 +1,12 @@
 // db.ts
 import { Client } from "pg";
+import dotenv from "dotenv"
+
+dotenv.config();
+
 
 const client = new Client({
-  connectionString: "postgresql://neondb_owner:npg_NS7C2UlhJiGu@ep-lingering-heart-a1aqqnm3-pooler.ap-southeast-1.aws.neon.tech/kunal?sslmode=require&channel_binding=require",
+  connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false },
 });
 

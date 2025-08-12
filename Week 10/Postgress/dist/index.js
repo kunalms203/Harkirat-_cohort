@@ -1,7 +1,9 @@
 // db.ts
 import { Client } from "pg";
+import dotenv from "dotenv";
+dotenv.config();
 const client = new Client({
-    connectionString: "postgresql://neondb_owner:npg_NS7C2UlhJiGu@ep-lingering-heart-a1aqqnm3-pooler.ap-southeast-1.aws.neon.tech/kunal?sslmode=require&channel_binding=require",
+    connectionString: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false },
 });
 const createUsersTable = async () => {
@@ -10,6 +12,7 @@ const createUsersTable = async () => {
         console.log("Connected to db");
         // Create table directly in your connected database
         const result = await client.query(`
+        
       CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
         name VARCHAR(20),
