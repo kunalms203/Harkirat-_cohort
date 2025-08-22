@@ -2,7 +2,9 @@ const user = {
     name: "Kuanl",
     age: 21
 };
-user.name = "Harkirat";
+//cannot cahnge the name value cause its readonly now
+// user.name = "Harkirat"; 
 console.log(user.name);
+const arr = [1, 2, 3];
 export {};
 //# sourceMappingURL=readonly.js.map

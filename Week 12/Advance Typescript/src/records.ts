@@ -1,13 +1,10 @@
-interface User {
+export type  User =  {
   name: string;
   id: number;
 }
 
 interface Users {
-  [key: string]: {
-    name:string,
-    id:number
-  };
+  [key: string]: User
 }
 
 // can also be done like this
@@ -18,13 +15,19 @@ interface Users {
 //     }
 // }
 
-const users:Users = {
-  kunal: {
+type RecordUser = Record<string,User>;
+
+const users:RecordUser = {
+  "kunal": {
     name: "Kunal",
     id: 1,
   },
-  shubham: {
+  "shubham": {
     name: "Shubham",
     id: 2,
   },
 };
+
+console.log(users.kunal);
+
+
